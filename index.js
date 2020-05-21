@@ -1,4 +1,4 @@
-const { init } = require('./dist/core');
+const { init, onKeyDown } = require('./dist/core');
 
 module.exports = {
 	decorateNotification: (C, { React }) => {
@@ -27,7 +27,22 @@ module.exports = {
 			}
 
 			componentDidMount () {
-				this.off = init(this.containerRef);
+				this.off = init(
+					this.containerRef,
+					() => { window.isOpen = true;  window.justToggled = true; },
+					() => { window.isOpen = false; window.justToggled = true; }
+				);
+				window.addEventListener(
+					'keydown',
+					(e) => {
+						onKeyDown(e);
+						if (window.isOpen) {
+							e.preventDefault();
+							e.stopPropagation();
+						}
+					},
+					{ capture: true }
+				);
 			}
 
 			componentWillUnmount () {
