@@ -1,0 +1,20 @@
+{
+  "name": "dz_hyper",
+  "version": "0.0.1",
+  "description": "TODO",
+  "scripts": {
+    "watch": "shadow-cljs watch module",
+    "build": "shadow-cljs clj-run build.main/build",
+    "repl": "shadow-cljs cljs-repl module"
+  },
+  "author": "TODO",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "snabbdom": "0.7.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.0",
+    "shadow-cljs": "^2.8.93"
+  }
+}

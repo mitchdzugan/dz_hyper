@@ -1,0 +1,12 @@
+{:source-paths ["src" "cli"]
+ :dependencies [[mayu "0.1.37"]]
+ :open-file-command ["subl"
+                     ["%s:%s:%s" :file :line :column]]
+ :dev-http {7000 "target"}
+ :builds {:module {:output-dir "dist/"
+                    :target :npm-module
+                    :compiler-options {:warnings {:redef false}
+                                       :infer-externs :auto}
+                    :devtools {:after-load frontends.browser/reload!}
+                    :release {:output-dir "dist/"}}}}}
+
